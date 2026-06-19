@@ -28,7 +28,6 @@ body {
 }
 
 .header .container {
-  justify-content: space-between;
   align-items: center;
   height: 100%;
 }
@@ -36,10 +35,12 @@ body {
 .header a {
   text-decoration: none;
   color: #e3b062;
+  
 }
 
 .agora {
   font-weight: 800;
+  
 }
 
 .navbar {
@@ -49,18 +50,27 @@ body {
   justify-content: space-between;
   list-style: none;
   color: #e3b062;
+  position: relative;
+  left: 600px;
 }
-.imagem_dado{
+.container .imagem_dado{
   width: 80px;
+}
+.header .container .logo{
+  display: flex;
+  justify-content: space-between;
 }
 .titulo {
   color: #F59402;
   width: fit-content;
   font-weight: 500;
+
 }
 
 .header h1 {
   margin: 0;
+  position: relative;
+  top: 15px;
 }
 
 /* BANNER */
@@ -105,7 +115,9 @@ body {
 }
 
 .box img {
-  width: 170px;
+  border-radius: 15px;
+  width: 250px;
+  height: 250px;
 }
 
 .social .container .boxes {
