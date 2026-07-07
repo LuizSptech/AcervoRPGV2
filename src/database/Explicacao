@@ -1,0 +1,16 @@
+Alterações realizadas
+
+Exclusão da tabela ResultadoQuiz.
+Criação da tabela Postagem.
+
+Explicações
+
+O usuário poderá realizar o quiz apenas uma vez
+
+Foi adicionada a funcionalidade de postagens, permitindo que os usuários compartilhem momentos especiais ou experiências que tiveram jogando RPG.
+
+Justificativa
+
+A funcionalidade de postagens foi pensada para aumentar a interação do usuario com o site e fornecer novos dados que serão utilizados na hora da dashboard.
+
+Observação: o banco de dados ainda está em fase de idealização, portanto a estrutura poderá sofrer alterações durante o desenvolvimento do projeto.
