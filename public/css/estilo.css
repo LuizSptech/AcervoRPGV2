@@ -164,12 +164,13 @@ body {
   width: 500px;
   border-radius: 10px;
   border-style: solid;
+  
 }
 
 .txt{
   position: relative;
   padding-top: 40px;
-  left: 12%;
+  left: 13%;
   font-size: 18px;
   font-family: "Metamorphous", serif;
   height: 50px;
@@ -266,8 +267,7 @@ body {
 .botao {
   cursor: pointer;
   font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
+  
   font-weight: 600;
   font-size: 18px;
   color: black;
@@ -279,6 +279,8 @@ body {
   border-radius: 20px;
   border-color: black;
   border-style: solid;
+  position: relative;
+  right: 35%;
 }
 
 .loading-div {
