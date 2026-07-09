@@ -7,19 +7,19 @@ function buscarPorId(id) {
 }
 
 function listar() {
-  var instrucaoSql = `SELECT id, razao_social, cnpj, codigo_ativacao FROM empresa`;
+  var instrucaoSql = `SELECT id, nome FROM usuario`;
 
   return database.executar(instrucaoSql);
 }
 
-function buscarPorCnpj(cnpj) {
-  var instrucaoSql = `SELECT * FROM empresa WHERE cnpj = '${cnpj}'`;
+function buscarPorCnpj(nome) {
+  var instrucaoSql = `SELECT * FROM usuario WHERE nome = '${nome}'`;
 
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(razaoSocial, cnpj) {
-  var instrucaoSql = `INSERT INTO empresa (razao_social, cnpj) VALUES ('${razaoSocial}', '${cnpj}')`;
+function cadastrar(id, nome) {
+  var instrucaoSql = `INSERT INTO usuario (id, nome) VALUES ('${id}', '${nome}')`;
 
   return database.executar(instrucaoSql);
 }
