@@ -6,6 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <button onclick="show()">MOSTRAR FEED</button>
+    <div id="resposta"></div>
 </body>
 </html>
+
+<script>
+function show(){
+
+    fetch("/feed/scroll")
+    .then(function (resultado){
+        return resultado.json
+        
+    })
+    .then(function (dados){
+        console.log(dados)
+    });
+
+    }
+</script>
