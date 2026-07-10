@@ -422,3 +422,30 @@ input {
   75%  {transform: rotate(-25deg)}
   100% {transform: rotate(25deg)}
 }
+
+.fundo{
+  background-color: #fff;
+  width: 1920px;
+  height: 1080px;
+}
+
+.feed{
+  display: flex;
+  
+  padding-top: 20px;
+  }
+
+
+.fy{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 500px;
+  height: 800px;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: black;
+  left: 37%;
+
+
+}

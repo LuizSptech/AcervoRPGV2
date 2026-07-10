@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/estilo.css">
 </head>
-<body>
-    <button onclick="show()">MOSTRAR FEED</button>
-    <div id="resposta"></div>
+<body onload="show()">
+    <div class="fundo">
+        <div class="fy">
+            <div id="resposta" class="feed"></div>
+        </div>
+        
+    </div>
 </body>
 </html>
 
@@ -16,12 +21,15 @@ function show(){
 
     fetch("/feed/scroll")
     .then(function (resultado){
-        return resultado.json
+        return resultado.json()
         
     })
     .then(function (dados){
-        console.log(dados)
+        console.log(dados[0])
+        resposta.innerHTML += `${dados[0].titulo}<br>`
+        resposta.innerHTML += `${dados[0].descricao}<br>`
+        resposta.innerHTML += `${dados[0].imagem}<br>`
     });
-
+    
     }
 </script>
