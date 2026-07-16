@@ -36,3 +36,8 @@ create table postagem (
     fk_usuario int,
     foreign key (fk_usuario) references usuario(id)
 );
+
+
+SELECT usuario.nome, postagem.titulo, postagem.imagem, postagem.descricao, postagem.horario from postagem 
+JOIN usuario ON postagem.fk_usuario = usuario.id 
+order by horario;
