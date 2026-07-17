@@ -1,75 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/estilo.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/estilo.css">
 </head>
 
 <body onload="show()">
-    <div class="header">
-      <div class="container">
-          <div class="logo">
-            <img class="imagem_dado" src="./assets/imagens/rpglogo.png" alt="">
-            <h1 class="titulo">ACERVORPG</h1>
-          </div>
-        <ul class="navbar">
-          <li class="agora">
-            
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-          <li>
-            <a href="Feed.html">Feed</a>
-          </li>
-        </ul>
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img class="imagem_dado" src="./assets/imagens/rpglogo.png" alt="">
+        <h1 class="titulo">ACERVORPG</h1>
+      </div>
+      <ul class="navbar">
+        <li class="agora">
+
+        </li>
+        <li>
+          <a href="simulador.html">Simulador</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        <li>
+          <a href="cadastro.html">Cadastro</a>
+        </li>
+        <li>
+          <a href="Feed.html">Feed</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="fundo">
+    <div class="fy">
+      <div id="listaPost">
+        <div class="feed">
+          
+          
+          
+        </div>
+        </div>
       </div>
     </div>
+  
 
-    <div class="fundo">
-        <div class="fy">
-            <div id="resposta" class="feed">
-                <div id="titulo" class="tituloPost"></div>
-                <div id="descricao" class="descricaoPost"></div>
-                <div id="imagem" class="imagemPost"></div>
-            </div>
-        </div>
-        
-    </div>
+  </div>
 
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito com amor por Luiz Fernando &hearts; SPTech &copy; 2023-2026</h4>
-        </div>
+  <!--footer inicio-->
+  <div class="footer">
+    <div class="container">
+      <h4>Feito com amor por Luiz Fernando &hearts; SPTech &copy; 2023-2026</h4>
     </div>
-    <!--footer fim-->
+  </div>
+  <!--footer fim-->
 </body>
+
 </html>
 
 <script>
-function show(){
+
+
+  function show() {
+
 
     fetch("/feed/scroll")
-    .then(function (resultado){
+      .then(function (resultado) {
         return resultado.json()
-        
-    })
-    .then(function (dados){
-        console.log(dados[0])
-        titulo.innerHTML += `${dados[1].titulo}<br>`
-        descricao.innerHTML += `${dados[1].descricao}<br>`
-        imagem.innerHTML += `${dados[0].imagem}<br>`
-    });
-    
-    }
+
+      })
+      .then(function (dados) {
+        let quantidade = `${dados[0].quantidade}`
+        for (let i = 0; i < quantidade; i++) {
+          console.log(dados[i])
+          
+          
+          const fundo = document.getElementById("imagem")
+
+          fundo.style.backgroundImage = `url(${dados[i].imagem})`
+
+        }
+      });
+  }
 </script>
