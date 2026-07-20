@@ -187,15 +187,7 @@ body {
   background-color: #9ccc65;
 }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: 450px;
-  width: 100%;
-  align-items: center;
-  color: white;
-}
+
 
 .card-aquario {
   margin: 2%;
@@ -432,6 +424,7 @@ canvas {
     display: flex;
     gap: 20px;
     margin-bottom: 30px;
+    flex-direction: row;
 }
  
 .card {
@@ -444,7 +437,8 @@ canvas {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: 0.3s;
+    position: relative;
+    left: 400px;
 }
  
 
@@ -476,5 +470,130 @@ canvas {
 .grafico{
   width: 600px;
   height: 300px;
-  background-color: white;
+  background-color: #FFC067;
+}
+
+.grafico-pie{
+  width: 300px;
+  height: 300px;
+  background-color: #FFC067;
+  position: relative;
+  left: 50px;
+}
+
+
+.grupo-graficos {
+   display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-direction: row;
+}
+
+.card-pie{
+    
+    height: 330px;
+    background-color: #FFC067;
+    border-radius: 18px;
+    border: 3px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    position: relative;
+    left: 400px;
+}
+
+
+
+.card-barra{
+    
+    height: 330px;
+    background-color: #FFC067;
+    border-radius: 18px;
+    border: 3px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:auto;
+    position: relative;
+    left: 420px;
+}
+
+
+.KPIS{
+ display: flex;
+  flex-direction: column;
+  
+  width: 300px;
+  height: 800px;
+  position: absolute;
+  left: 1605px;
+  justify-content: space-evenly;
+  top: 23px;
+}
+
+
+.KPI1{
+    
+  height: 200px;
+  font-size: 25px;
+  width: 200px;
+  background-color: #FFC067;
+  border-radius: 18px;
+  border: 3px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 10%;
+  
+}
+
+.KPI2{
+  height: 200px;
+  width: 200px;
+  font-size: 25px;
+  background-color: #FFC067;
+  border-radius: 18px;
+  border: 3px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 10%;
+}
+.KPI3{
+  height: 200px;
+  font-size: 25px;
+  width: 200px;
+  background-color: #FFC067;
+  border-radius: 18px;
+  border: 3px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 10%;
+}
+
+#esteriotipo {
+  font-family: "Metamorphous", serif;
+  font-size: 20px;
+}
+
+#saida {
+  display: flex;
+  justify-content: center;
+    font-family: "Metamorphous", serif;
+  font-size: 30px;
+}
+
+#total{
+  display: flex;
+  justify-content: center;
+  font-family: "Metamorphous", serif;
+  font-size: 30px;
+
 }
