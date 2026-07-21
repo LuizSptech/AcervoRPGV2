@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz | Acervo RPG</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="icon" href="./assets/imagens/rpg.png">
+    
+</head>
+<body>
+ 
+ 
+    <!-- QUIZ -->
+    <div class="body-quiz">
+        <div class="tela-preta-quiz">
+            <h1>TESTE QUESTIONÁRIO ACERVO</h1>
+            <p>Para descobrir que tipo de jogador você é</p>
+            <button onclick="start()" id="botao" class="botao-quiz">COMEÇAR QUIZ</button>
+            <div id="quiz">
+                <h2 id="Enunciado"></h2>
+                <input type="button" id="Resposta1" onclick="Resposta(1)">
+                <input type="button" id="Resposta2" onclick="Resposta(2)">
+                <input type="button" id="Resposta3" onclick="Resposta(3)">
+                <input type="button" id="Resposta4" onclick="Resposta(4)">
+                <input type="button" id="Resposta5" onclick="Resposta(5)">
+            </div>
+            <div id="final"></div>
+        </div>
+    </div>
+ 
+    <!-- RODAPÉ -->
+    <div class="footer">
+    <div class="container">
+      <h4>Feito com amor por Luiz Fernando &hearts; SPTech &copy; 2023-2026</h4>
+    </div>
+  </div>
+ 
+</body>
+</html>
+ 
+<script>
+ 
+    const listaPerguntas = [
+        {
+            Pergunta: "O que mais te anima em uma sessão de RPG?",
+            AlternativaA: "Liderar momentos importantes e tomar decisões",
+            AlternativaB: "Criar um personagem extremamente forte e eficiente",
+            AlternativaC: "Ver as regras funcionando corretamente",
+            AlternativaD: "Interpretar cenas e desenvolver personagens",
+            AlternativaE: "Ajudar o grupo e acompanhar a dinâmica da mesa.",
+        },
+        {
+            Pergunta: "Quando cria um personagem, você prioriza…",
+            AlternativaA: "Carisma e presença no grupo",
+            AlternativaB: "Habilidades fortes e combinações poderosas",
+            AlternativaC: "Conhecimento do sistema e mecânicas",
+            AlternativaD: "História, personalidade e objetivos",
+            AlternativaE: "Utilidade para a equipe",
+        },
+        {
+            Pergunta: "Em um combate, você normalmente…",
+            AlternativaA: "Coordena os aliados",
+            AlternativaB: "Busca causar o maior impacto possível",
+            AlternativaC: "Presta atenção nas regras e condições",
+            AlternativaD: "Faz ações estilosas e interpretativas",
+            AlternativaE: "Dá suporte e protege os companheiros",
+        },
+        {
+            Pergunta: "O grupo está perdido sem saber o que fazer. Você…",
+            AlternativaA: "Assume a liderança",
+            AlternativaB: "Procura a alternativa mais vantajosa",
+            AlternativaC: "Analisa as possibilidades dentro das regras",
+            AlternativaD: "Tenta resolver interpretando a situação",
+            AlternativaE: "Ajuda o grupo a chegar em um consenso",
+        },
+        {
+            Pergunta: "Qual dessas frases mais combina com você?",
+            AlternativaA: "'Sigam meu plano'",
+            AlternativaB: "'Esse combo pode ficar absurdo'",
+            AlternativaC: "'Pelas regras isso funciona diferente'",
+            AlternativaD: "'Meu personagem faria isso'",
+            AlternativaE: "'Vou ajudar no que precisarem'",
+        },
+        {
+            Pergunta: "O que mais te incomoda em uma campanha?",
+            AlternativaA: "Falta de direção no grupo",
+            AlternativaB: "Personagens limitados mecanicamente",
+            AlternativaC: "Regras inconsistentes",
+            AlternativaD: "Falta de profundidade narrativa",
+            AlternativaE: "Falta de cooperação entre os jogadores",
+        },
+        {
+            Pergunta: "Seu momento favorito em RPG costuma ser…",
+            AlternativaA: "Grandes decisões importantes",
+            AlternativaB: "Vencer desafios difíceis usando estratégia",
+            AlternativaC: "Resolver discussões sobre o sistema",
+            AlternativaD: "Cenas emocionantes de roleplay",
+            AlternativaE: "Quando o grupo trabalha unido",
+        },
+        {
+            Pergunta: "Em discussões na mesa, você normalmente…",
+            AlternativaA: "Tenta organizar as decisões",
+            AlternativaB: "Busca a solução mais eficiente",
+            AlternativaC: "Consulta as regras ou lembra delas",
+            AlternativaD: "Pensa no impacto narrativo da cena",
+            AlternativaE: "Escuta todos antes de falar",
+        },
+        {
+            Pergunta: "O que define um RPG perfeito para você?",
+            AlternativaA: "Um grupo ativo com liderança forte",
+            AlternativaB: "Liberdade para criar personagens",
+            AlternativaC: "Um sistema bem estruturado",
+            AlternativaD: "Uma história profunda e marcante",
+            AlternativaE: "Boa convivência e cooperação",
+        },
+        {
+            Pergunta: "Qual função você mais assume no grupo?",
+            AlternativaA: "Líder",
+            AlternativaB: "Linha de frente, responsável por dano e estratégia",
+            AlternativaC: "Especialista e conhecedor das regras",
+            AlternativaD: "Interpretador",
+            AlternativaE: "Suporte e mediador",
+        },
+    ]
+ 
+    const quiz = document.getElementById("quiz")
+    const final = document.getElementById("final")
+    const botao = document.getElementById("botao")
+    const Enunciado = document.getElementById("Enunciado")
+    const Resposta1 = document.getElementById("Resposta1")
+    const Resposta2 = document.getElementById("Resposta2")
+    const Resposta3 = document.getElementById("Resposta3")
+    const Resposta4 = document.getElementById("Resposta4")
+    const Resposta5 = document.getElementById("Resposta5")
+ 
+    let respostaAtual = 0
+    let protagonista = 0
+    let combeiro = 0
+    let advogado = 0
+    let narrador = 0
+    let suporte = 0
+    let resultado = 0
+    let valores = []
+ 
+    Resposta1.style.display = "none"
+    Resposta2.style.display = "none"
+    Resposta3.style.display = "none"
+    Resposta4.style.display = "none"
+    Resposta5.style.display = "none"
+ 
+    function start() {
+        botao.style.display = "none"
+        quiz.style.display = "flex"
+        mostrarPergunta()
+        Resposta1.style.display = "flex"
+        Resposta2.style.display = "flex"
+        Resposta3.style.display = "flex"
+        Resposta4.style.display = "flex"
+        Resposta5.style.display = "flex"
+    }
+ 
+    function mostrarPergunta() {
+        Enunciado.innerHTML = listaPerguntas[respostaAtual].Pergunta
+        Resposta1.value = listaPerguntas[respostaAtual].AlternativaA
+        Resposta2.value = listaPerguntas[respostaAtual].AlternativaB
+        Resposta3.value = listaPerguntas[respostaAtual].AlternativaC
+        Resposta4.value = listaPerguntas[respostaAtual].AlternativaD
+        Resposta5.value = listaPerguntas[respostaAtual].AlternativaE
+    }
+ 
+    function Resposta(valor) {
+        if (valor == 1) protagonista++
+        else if (valor == 2) combeiro++
+        else if (valor == 3) advogado++
+        else if (valor == 4) narrador++
+        else if (valor == 5) suporte++
+ 
+        respostaAtual++
+ 
+        if (respostaAtual < listaPerguntas.length) {
+            mostrarPergunta()
+        } else {
+            mostrarResultado()
+            guardar()
+        }
+        
+    }
+ 
+    function mostrarResultado() {
+        quiz.style.display = "none"
+ 
+        valores = [protagonista, combeiro, advogado, narrador, suporte]
+ 
+        let maior = Math.max(...valores)
+        
+  
+ 
+        if (maior == protagonista) { resultado = 1; final.innerHTML = "Resultado: PROTAGONISTA" }
+        else if (maior == combeiro) { resultado = 2; final.innerHTML = "Resultado: COMBEIRO" }
+        else if (maior == advogado) { resultado = 3; final.innerHTML = "Resultado: ADVOGADO DE REGRAS" }
+        else if (maior == narrador) { resultado = 4; final.innerHTML = "Resultado: INTERPRETADOR / ATOR" }
+        else if (maior == suporte) { resultado = 5; final.innerHTML = "Resultado: OBSERVADOR / SUPORTE" }
+        console.log(valores[0])
+        console.log(valores[1])
+        console.log(valores[2])
+        console.log(valores[3])
+        console.log(valores[4])
+        console.log(resultado)
+        
+    }
+ 
+    function guardar() {
+        const usuario = sessionStorage.ID_USUARIO
+ 
+        fetch("/quizz/guardar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                resultadoServer: resultado,
+                usuarioServer: usuario,
+            }),
+        })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                setTimeout(function () {
+                    window.location.href = "./dashboard/dashTest.html";
+                }, 1000)
+            } else {
+                console.log("Erro ao salvar o quiz")
+            }
+        })
+        .catch(function (erro) {
+            console.log("Erro:", erro)
+        })
+    }
+</script>

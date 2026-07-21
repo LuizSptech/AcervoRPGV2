@@ -482,3 +482,71 @@ input {
   padding-top: 5px;
     padding-bottom: 5px;
 }
+
+
+.body-quiz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1080px;
+    background-image: url(../assets/imagens/Fundo-Quiz.jpg);
+    background-size: cover;
+    background-position: center;
+}
+ 
+.tela-preta-quiz {
+    background-color: #0000008c;
+    width: 75%;
+    min-height: 500px;
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    gap: 15px;
+    box-shadow:
+        0 0 20px #00000099,
+        0 0 40px #0000004d;
+}
+ 
+.botao-quiz {
+    width: 160px;
+    height: 60px;
+    color: white;
+    background-color: #F59402;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    align-self: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+ 
+
+ 
+#quiz {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+ 
+#Resposta1,
+#Resposta2,
+#Resposta3,
+#Resposta4,
+#Resposta5 {
+    display: flex;
+    padding: 10px;
+    background-color: #F59402;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
+}
+ 
