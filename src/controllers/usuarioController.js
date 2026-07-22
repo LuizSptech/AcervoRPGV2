@@ -23,7 +23,8 @@ function autenticar(req, res) {
                                     id: resultadoAutenticar[0].id,
                                     email: resultadoAutenticar[0].email,
                                     nome: resultadoAutenticar[0].nome,
-                                    senha: resultadoAutenticar[0].senha,                   
+                                    senha: resultadoAutenticar[0].senha,     
+                                    fezQuiz: resultadoAutenticar[0].totalQuiz > 0              
                                 });
                             
                         console.log(resultadoAutenticar);

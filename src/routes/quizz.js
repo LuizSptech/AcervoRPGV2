@@ -11,7 +11,7 @@ router.post("/guardar", function (req, res) {
 
 router.get("/puxar", function (req, res) {
     //função a ser chamada quando o dash for carregado
-    quizzController.scroll(req,res);
+    quizzController.puxar(req,res);
 });
 
 module.exports = router;

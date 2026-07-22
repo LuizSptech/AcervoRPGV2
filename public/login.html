@@ -27,22 +27,18 @@
             <h1 class="titulo">ACERVORPG</h1>
           </div>
         <ul class="navbar">
-          <li class="agora">
+         <li class="agora">
             
           </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
+         
           <li>
             <a href="login.html">Login</a>
           </li>
+          <li>|</li>
           <li>
             <a href="cadastro.html">Cadastro</a>
           </li>
-          <li>
-            <a href="Feed.html">Feed</a>
-          </li>
+          
         </ul>
       </div>
     </div>
@@ -126,19 +122,23 @@
             if (resposta.ok) {
                 console.log(resposta);
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+               resposta.json().then(json => {
+    console.log(json);
+    console.log(JSON.stringify(json));
+    sessionStorage.EMAIL_USUARIO = json.email;
+    sessionStorage.NOME_USUARIO = json.nome;
+    sessionStorage.ID_USUARIO = json.id;
+    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
-                    setTimeout(function () {
-                        window.location = "Quizz.html";
-                    }, 1000); // apenas para exibir o loading
+    setTimeout(function () {
+        if (json.fezQuiz) {
+            window.location = "../dashboard/dashboard.html";
+        } else {
+            window.location = "Quizz.html";
+        }
+    }, 1000);
 
-                });
+});
 
             } else {
 

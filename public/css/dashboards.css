@@ -597,3 +597,10 @@ canvas {
   font-size: 30px;
 
 }
+
+#ultimo_mes {
+  display: flex;
+  justify-content: center;
+  font-family: "Metamorphous", serif;
+  font-size: 30px;
+}

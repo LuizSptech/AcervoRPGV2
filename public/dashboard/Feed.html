@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="./assets/imagens/rpg.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACERVORPG</title>
+  <link rel="stylesheet" href="../css/estilo.css">
+  <link rel="stylesheet" href="../css/dashboards.css">
+</head>
+
+<body onload="show()">
+  
+ <div class="header-left">
+
+            <h1>ACERVORPG</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Gráficos</h3>
+                </a>
+            </div>
+            
+            <div class="btn-nav">
+                
+                    <h3>Feed</h3>
+            </div>
+            <div class="btn-nav-white">
+              <a href="mural.html">
+                <h3>Postar</h3>
+              </a>
+            </div>
+
+           <div class="btn-logout" onclick="sair()">
+                <h3>Sair</h3>
+            </div>
+
+        </div>
+ <div class="fundo">
+    <div class="fy">
+        <div id="listaPost">
+
+        </div>
+    </div>
+</div>
+  
+</body>
+
+</html>
+<script>
+ const nome = sessionStorage.NOME_USUARIO;
+b_usuario.innerHTML = nome;
+ 
+function show() {
+ 
+    listaPost.innerHTML = "";
+ 
+    fetch("/feed/scroll")
+        .then(function (resultado) {
+            return resultado.json();
+        })
+        .then(function (dados) {
+ 
+            for (let i = 0; i < dados.length; i++) {
+ 
+                const post = dados[i];
+ 
+                const card = document.createElement("div");
+                card.className = "feed";
+ 
+                const imagem = post.imagem && post.imagem.trim() !== "";
+              
+                card.innerHTML = `
+                    <div class="usuarioPost">${post.nome}</div>
+ 
+                    <div class="tituloPost">
+                        ${post.titulo}
+                    </div>
+ 
+                    <div class="descricaoPost">
+                        ${post.descricao}
+                    </div>
+ 
+                    ${imagem ? `<img class="imagemPost" src="${post.imagem}" alt="${post.titulo}">` : ""}
+                `;
+ 
+                listaPost.appendChild(card);
+            }
+ 
+        })
+        .catch(function (erro) {
+            console.log(erro);
+        });
+ 
+}
+
+function sair() {
+        sessionStorage.clear();
+        window.location = "../login.html";
+    }
+</script>

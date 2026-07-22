@@ -17,7 +17,7 @@
         <div class="tela-preta-quiz">
             <h1>TESTE QUESTIONÁRIO ACERVO</h1>
             <p>Para descobrir que tipo de jogador você é</p>
-            <button onclick="start()" id="botao" class="botao-quiz">COMEÇAR QUIZ</button>
+            <button onclick="start()" id="botao" class="botao-quiz2">COMEÇAR QUIZ</button>
             <div id="quiz">
                 <h2 id="Enunciado"></h2>
                 <input type="button" id="Resposta1" onclick="Resposta(1)">
@@ -135,6 +135,7 @@
     const Resposta4 = document.getElementById("Resposta4")
     const Resposta5 = document.getElementById("Resposta5")
  
+
     let respostaAtual = 0
     let protagonista = 0
     let combeiro = 0
@@ -159,6 +160,7 @@
         Resposta3.style.display = "flex"
         Resposta4.style.display = "flex"
         Resposta5.style.display = "flex"
+        
     }
  
     function mostrarPergunta() {
@@ -207,26 +209,28 @@
         console.log(valores[2])
         console.log(valores[3])
         console.log(valores[4])
-        console.log(resultado)
-        
+        let textoDiv = document.getElementById("final").textContent
+        console.log(textoDiv)
+        sessionStorage.RESULTADO = textoDiv
     }
  
     function guardar() {
         const usuario = sessionStorage.ID_USUARIO
+
  
         fetch("/quizz/guardar", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 resultadoServer: resultado,
-                usuarioServer: usuario,
+                usuarioServer: usuario
             }),
         })
         .then(function (resposta) {
             if (resposta.ok) {
                 setTimeout(function () {
-                    window.location.href = "./dashboard/dashTest.html";
-                }, 1000)
+                    window.location.href = "./dashboard/dashboard.html";
+                },3000)
             } else {
                 console.log("Erro ao salvar o quiz")
             }
